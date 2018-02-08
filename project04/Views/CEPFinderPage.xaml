@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="project04.Views.CEPFinderPage">
+	<ContentPage.Content>
+        <StackLayout>
+            <Label Text="ADDRESS SEARCH"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Entry x:Name="txtCEP" Placeholder="Type ZIP Code" Keyboard="Numeric"></Entry>
+            <Button Text="Search" Clicked="OnZIPSearchAsync"></Button>
+
+            <Label x:Name="lblResult"/>
+        </StackLayout>
+        
+	</ContentPage.Content>
+</ContentPage>

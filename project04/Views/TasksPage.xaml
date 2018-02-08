@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project04.Views.TasksPage"
+             x:Name="TaskPage">
+	<ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="editNewTask" Text="{Binding selectedTask.name}" Placeholder="Type new Task" HorizontalOptions="FillAndExpand"></Entry>
+                <Button Command="{Binding saveCommand}" Text="Save" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+
+            <Label Text="Task list" HorizontalOptions="Center"/>
+            
+            <ListView x:Name="taskList" ItemsSource="{Binding tasks}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Edit" Command="{Binding Source={x:Reference TaskPage}, Path=BindingContext.editCommand}" CommandParameter="{Binding .}"></MenuItem>
+                                <MenuItem Text="Delete" Command="{Binding Source={x:Reference TaskPage}, Path=BindingContext.deleteCommand}" CommandParameter="{Binding .}"></MenuItem>
+                            </ViewCell.ContextActions>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding name}" HorizontalOptions="StartAndExpand"></Label>
+                                <Button Text="{Binding isFinished}" Command="{Binding Source={x:Reference TaskPage}, Path=BindingContext.tougleStatusCommand}" CommandParameter="{Binding .}" HorizontalOptions="End"></Button>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>    
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>
